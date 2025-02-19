@@ -1,19 +1,17 @@
 /// <reference types="cypress" />
 
-import type users from '../fixtures/users.json'
+// interface FixtureTypes {
+//     users: typeof users
+// }
 
-interface FixtureTypes {
-    users: typeof users
-}
+declare namespace Cypress {
+    interface Chainable {
+        // fixture<K extends keyof FixtureTypes>(
+        //     fixtureName: K
+        // ): Chainable<FixtureTypes[K]>
 
-declare global {
-    namespace Cypress {
-        interface Chainable {
-            fixture<K extends keyof FixtureTypes>(
-                fixtureName: K
-            ): Chainable<FixtureTypes[K]>
+        login(email: string | undefined, password: string | undefined)
 
-            login(email: string | undefined, password: string | undefined)
-        }
+        registerRandomUser(): Chainable<User>
     }
 }

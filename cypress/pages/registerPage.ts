@@ -16,6 +16,7 @@ export class RegisterPage {
             cy.findByText(
                 'Your account was created successfully. You are now logged in.'
             ),
+        textErrors: () => cy.get('.error'),
     }
 
     typeFirstNName(firstName: string) {
@@ -82,5 +83,9 @@ export class RegisterPage {
 
     getSuccessMessage() {
         return this.elements.textSuccessMessage()
+    }
+
+    getErrors() {
+        return this.elements.textErrors()
     }
 }
